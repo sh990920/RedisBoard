@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>글 업데이트</h1>
+    <form action="/board/post/updatePage/update/" method="POST">
+        <input type="hidden" th:value="${board.idx}" name="idx">
+        <input type="hidden" th:value="${id}" name="memberId">
+        <div>
+            <span>title</span>
+            <input type="text" id="title" th:value="${board.title}" name="title">
+        </div>
+        <div>
+            <span>contents</span>
+            <input type="text" id="contents" th:value="${board.contents}" name="contents">
+        </div>
+        <input type="submit" value="글 수정">
+    </form>
+</body>
+</html>
