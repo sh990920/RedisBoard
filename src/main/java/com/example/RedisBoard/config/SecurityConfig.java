@@ -50,12 +50,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 'USER' 권한을 가진 유저가 로그인을 할 때 사용할 경로, 실패시 이동할 경로, 성공시 이동할 경로 작성
         http.formLogin()
-                .loginPage("/member/loginPage/")
+                .loginPage("/loginPage/")
                 //.failureUrl("/loginPage/")
                 .usernameParameter("id")
                 .passwordParameter("password")
-                .loginProcessingUrl("/member/loginPage/login/")
-                .defaultSuccessUrl("/member/loginPage/login/loginSuccess/")
+                .loginProcessingUrl("/loginPage/login/")
+                .defaultSuccessUrl("/loginPage/login/loginSuccess/")
                 .failureHandler(new AuthenticationFailureHandler() {
                     // 로그인 실패시 작동할 핸들러 생성
                     @Override
@@ -71,14 +71,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             errorMessage = "알 수 없는 이유로 로그인에 실패하였습니다.";
                         }
                         // 에러 메세지를 포함해서 다시 loginPage 로 이동
-                        response.sendRedirect("/member/loginPage/?error=true&errorMessage=" + URLEncoder.encode(errorMessage, "UTF-8"));
+                        response.sendRedirect("/loginPage/?error=true&errorMessage=" + URLEncoder.encode(errorMessage, "UTF-8"));
                     }
                 })
                 .permitAll();
 
         // 로그아웃
         http.logout()
-                .logoutUrl("/member/logout/")
+                .logoutUrl("/logout/")
                 .logoutSuccessUrl("/");
     }
 

@@ -16,25 +16,44 @@
         // 에러 체크값이 true일 경우 에러 알림창 등장
         if ( error == "true" ) {
             alert(errorMessage);
-            location.href="/member/loginPage/";
+            location.href="/loginPage/";
         }
     </script>
 </head>
 <body>
-    <h1>로그인</h1>
-    <form action="/member/loginPage/login/" method="POST">
-        <div>
-            <span>ID : </span>
-            <input type="text" name="id">
+    <div class="container">
+        <div class="row align-items-center" style="height: 200px; width: 100%; text-align: center">
+            <h1>로그인</h1>
         </div>
-        <div>
-            <span>PW : </span>
-            <input type="password" name="password">
+        <div class="row" style="height: 50px; width: 80%; text-align: end; margin-right: 20%;">
+            <a href="/">뒤로가기</a>
         </div>
-        <input type="submit" value="로그인">
-    </form>
-    <div>
-        <input type="button" value="회원가입" onclick="location.href='/member/signUpPage/'">
+        <div style="height: 400px; width: 60%; margin-left: 20%; margin-right: 20%;">
+            <form style="height: 100%; width: 100%;" action="/loginPage/login/" method="POST">
+                <div class="row align-items-center" style="height: 25%; width: 100%;">
+                    <div class="col-4" style="font-size: 25px; text-align: center;">
+                        ID :
+                    </div>
+                    <div class="col-8" style="font-size: 20px;">
+                        <input style="width: 100%;" type="text" name="id">
+                    </div>
+                </div>
+                <div class="row align-items-center" style="height: 25%; width: 100%;">
+                    <div class="col-4" style="font-size: 25px; text-align: center;">
+                        비밀번호 :
+                    </div>
+                    <div class="col-8" style="font-size: 20px;">
+                        <input style="width: 100%;" type="password" name="password">
+                    </div>
+                </div>
+                <div class="row align-items-center" style="height: 25%; width: 100%;">
+                    <input class="btn btn-primary" type="submit" value="로그인">
+                </div>
+                <div class="row align-items-center" style="height: 25%; width: 100%;">
+                    <input class="btn btn-primary" type="button" value="회원가입" onclick="location.href='/signUpPage/'">
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

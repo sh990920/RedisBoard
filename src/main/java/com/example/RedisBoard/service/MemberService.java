@@ -30,9 +30,15 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
     //회원가입
-    public void signUp(Member member, PasswordEncoder passwordEncoder){
-        member.setPassword(passwordEncoder.encode(member.getPassword()));
-        member.setRollName("USER");
-        memberRepository.save(member);
+    public String signUp(Member member, PasswordEncoder passwordEncoder){
+        Member isEmptyMember = memberRepository.findById(member.getId()).orElse(null);
+        if(isEmptyMember != null){
+            return "no";
+        }else{
+            member.setPassword(passwordEncoder.encode(member.getPassword()));
+            member.setRollName("USER");
+            memberRepository.save(member);
+            return "yes";
+        }
     }
 }
