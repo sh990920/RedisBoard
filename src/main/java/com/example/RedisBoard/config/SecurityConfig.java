@@ -26,9 +26,10 @@ import java.net.URLEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     MemberService memberService;
-
+    // 비밀번호 암호화
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -37,8 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
-
-
+        // 유효성 검사
         http.authorizeRequests()
                 .antMatchers("/board/addPage/**", "/board/post/updatePage/**", "/board/post/delete/**").hasRole("USER")
                 // 그 이외 모둔 url 은 모든 접속자가 접근 가능
@@ -51,7 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 'USER' 권한을 가진 유저가 로그인을 할 때 사용할 경로, 실패시 이동할 경로, 성공시 이동할 경로 작성
         http.formLogin()
                 .loginPage("/loginPage/")
-                //.failureUrl("/loginPage/")
                 .usernameParameter("id")
                 .passwordParameter("password")
                 .loginProcessingUrl("/loginPage/login/")

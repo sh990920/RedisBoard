@@ -14,11 +14,11 @@ import org.springframework.data.redis.core.RedisHash;
 @RedisHash(value = "Member")
 public class Member {
     @Id
-    private String id;
+    private String id; // 유저 id
 
-    private String password;
+    private String password; // 유저 pw
 
-    private String nickname;
+    private String nickname; // 유저 닉네임
 
-    private String rollName;
+    private String rollName; // 유저 권한
 }

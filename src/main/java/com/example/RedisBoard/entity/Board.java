@@ -14,11 +14,11 @@ import org.springframework.data.redis.core.RedisHash;
 @RedisHash(value = "Board")
 public class Board {
     @Id
-    private Long idx;
+    private Long idx; // 글 번호
 
-    private String memberId;
+    private String memberId; // 작성한 유저 id
 
-    private String title;
+    private String title; // 글 제목
 
-    private String contents;
+    private String contents; // 글 내용
 }

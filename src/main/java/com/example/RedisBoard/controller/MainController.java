@@ -16,13 +16,7 @@ public class MainController {
     @Autowired
     BoardService boardService;
 
-//    @GetMapping("/")
-//    public String main(Model model){
-//        List<Board> boardList = boardService.findAll();
-//        model.addAttribute("boardList", boardList);
-//        return "main";
-//    }
-
+    // 메인 페이지
     @GetMapping("/")
     public String main(Model model, @RequestParam(value="page", defaultValue="0") int page){
         Page<Board> boardPage = boardService.findPage(page);

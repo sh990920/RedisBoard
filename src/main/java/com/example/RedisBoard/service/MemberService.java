@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Builder
 public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
+
     // 로그인
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,6 +30,7 @@ public class MemberService implements UserDetailsService {
                 .roles(member.getRollName())
                 .build();
     }
+
     //회원가입
     public String signUp(Member member, PasswordEncoder passwordEncoder){
         Member isEmptyMember = memberRepository.findById(member.getId()).orElse(null);

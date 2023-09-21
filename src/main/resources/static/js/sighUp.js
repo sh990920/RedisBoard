@@ -15,6 +15,7 @@ function signUp(){
     }
     let url = "/signUpPage/signUp/";
 
+    // 비동기 통신
     fetch(url, {
         method : "POST",
         headers: {

@@ -16,9 +16,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @RequiredArgsConstructor
 @EnableRedisRepositories
 public class RedisConfig {
+    // redis ip 주소
     @Value("${spring.redis.host}")
     private String host;
-
+    // redis port 번호
     @Value("${spring.redis.port}")
     private int port;
 

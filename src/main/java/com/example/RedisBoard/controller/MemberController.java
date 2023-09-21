@@ -15,6 +15,7 @@ public class MemberController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    // 로그인 페이지
     @GetMapping("/loginPage/")
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "errorMessage", required = false) String errorMessage, Model model){
@@ -23,21 +24,25 @@ public class MemberController {
         return "member/login";
     }
 
+    // 로그인
     @PostMapping("/loginPage/login/")
     public void login(String id){
         memberService.loadUserByUsername(id);
     }
 
+    // 로그인 성공 시 이동할 url
     @GetMapping("/loginPage/login/loginSuccess/")
     public String loginSuccess(){
         return "redirect:/";
     }
 
+    // 회원가입 페이지
     @GetMapping("/signUpPage/")
     public String signUpPage(){
         return "member/signUp";
     }
 
+    // 회궝가입
     @PostMapping("/signUpPage/signUp/")
     @ResponseBody
     public String signUp(@RequestBody Member member){
@@ -45,8 +50,9 @@ public class MemberController {
         return res;
     }
 
+    // 로그아웃
     @GetMapping("/logout/")
     public void logout(){
-
+        // security 에서 자체적으로 잡아서 사용 x
     }
 }
